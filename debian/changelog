@@ -1,0 +1,1098 @@
+kexec-tools (1:2.0.16-1ubuntu1~16.04.1) xenial; urgency=low
+
+  * Backport latest kexec-tools from bionic to xenial (LP: #1743529).
+
+ -- Thadeu Lima de Souza Cascardo <cascardo@canonical.com>  Fri, 23 Feb 2018 12:11:36 -0300
+
+kexec-tools (1:2.0.16-1ubuntu1) bionic; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Adjust INITCONFFILE to vmlinux if used
+    - Add maintainer script helper to handle removal of conffile
+      /etc/default/grub.d/kexec-tools.cfg has been removed.
+      Handle it properly
+    - Add Breaks: statement toward kdump-tools
+       Starting with kdump-tools 1:1.5.9-6, this package takes
+       over the addition of crashkernel= parameter which has
+       been removed from kexec-tools.
+       Make sure that it is upgraded accordingly.
+  * New upstream release (LP: #1743529)
+
+ -- Thadeu Lima de Souza Cascardo <cascardo@canonical.com>  Fri, 23 Feb 2018 12:11:36 -0300
+
+kexec-tools (1:2.0.16-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #890818)
+  * Updated pointer to kexec-tools home page (Closes: #888565)
+  * Updtaed russian translation (Thanks, Lev) (Closes: #883918)
+  * Remove obsolete configuration file (Closes: #868100)
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 20 Feb 2018 11:13:24 -0700
+
+kexec-tools (1:2.0.15-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #876318, Closes: #854826)
+  * Enable compressed kernel support for ARM64 - Manoj Iyer
+    (Closes: #854093)
+  * Updated Portuguese translation (Closes: #857728)
+  * Updated German translation (Closes: #857737)
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 21 Sep 2017 15:07:18 -0600
+
+kexec-tools (1:2.0.15-0ubuntu1) artful; urgency=medium
+
+  * New upstream version (LP: #1713940):
+    - Modified:
+      - distclean_fix.patch
+        Hunk which modified purgatory makefile went upstream
+    - Dropped (already upstream):
+      - format-security.patch
+      - kexec-Increase-the-upper-limit-for-RAM-segments.patch
+      - ppc64-Reduce-number-of-ELF-LOAD-segments.patch
+      - 0001-kexec-extend-the-semantics-of-kexec_iomem_for_each_l.patch
+      - 0002-kexec-generalize-and-rename-get_kernel_stext_sym.patch
+      - 0003-arm64-identify-PHYS_OFFSET-correctly.patch
+      - 0004-arm64-change-return-values-on-error-to-negative.patch
+      - 0005-arm64-kdump-identify-memory-regions.patch
+      - 0006-arm64-kdump-add-elf-core-header-segment.patch
+      - 0007-arm64-kdump-set-up-kernel-image-segment.patch
+      - 0008-arm64-kdump-set-up-other-segments.patch
+      - 0009-arm64-kdump-add-DT-properties-to-crash-dump-kernel-s.patch
+      - 0010-arm64-kdump-Add-support-for-binary-image-files.patch
+
+ -- Stefan Bader <stefan.bader@canonical.com>  Wed, 30 Aug 2017 10:02:25 +0200
+
+kexec-tools (1:2.0.14-1ubuntu5) artful; urgency=medium
+
+  * Packaging cleanup, no functional change:
+    - Remove patch accidentally added, but not applied, in last upload:
+      0011-Handle-additional-e820-memmap-type-strings.patch.
+    - Remove patch dropped from series in 2.0.14-1, but still being
+      carried after Ubuntu merge: lp1546260-fix-purgatory-fail-gcc5.patch.
+
+ -- dann frazier <dannf@ubuntu.com>  Fri, 09 Jun 2017 09:58:43 -0600
+
+kexec-tools (1:2.0.14-1ubuntu4) artful; urgency=medium
+
+  * Add backport of upstream arm64 crashdump support (LP: #1694859).
+
+ -- dann frazier <dannf@ubuntu.com>  Thu, 08 Jun 2017 17:18:49 -0600
+
+kexec-tools (1:2.0.14-1ubuntu3) zesty; urgency=medium
+
+  * kexec: Increase the upper limit for RAM segments (LP: #1663400)
+
+ -- Manoj Iyer <manoj.iyer@canonical.com>  Tue, 14 Feb 2017 14:00:14 +0000
+
+kexec-tools (1:2.0.14-1ubuntu2) zesty; urgency=medium
+
+  [ Manoj Iyer ]
+  * Enable compressed kernel support for ARM64 (LP: #1661363).
+
+  [ dann frazier ]
+  * ppc64-Reduce-number-of-ELF-LOAD-segments.patch: Cherry-pick
+    from upstream, fixing kexec on some large memory configurations
+    (LP: #1661168).
+
+ -- dann frazier <dannf@ubuntu.com>  Fri, 03 Feb 2017 14:49:31 -0700
+
+kexec-tools (1:2.0.14-1ubuntu1) zesty; urgency=medium
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Adjust INITCONFFILE to vmlinux if used
+    - Use format-security.patch instead of const_string_warning.patch
+    - Add maintainer script helper to handle removal of conffile
+      /etc/default/grub.d/kexec-tools.cfg has been removed.
+      Handle it properly
+    - Add Breaks: statement toward kdump-tools
+       Starting with kdump-tools 1:1.5.9-6, this package takes
+       over the addition of crashkernel= parameter which has
+       been removed from kexec-tools.
+       Make sure that it is upgraded accordingly.
+  * Debian merge adds arm64 support (LP: #1659618).
+
+ -- dann frazier <dannf@ubuntu.com>  Wed, 01 Feb 2017 12:48:15 -0700
+
+kexec-tools (1:2.0.14-1) unstable; urgency=medium
+
+  * New upstream release
+  * Removed the patch lp1546260-fix-purgatory-fail-gcc5.patch which
+    has been accepted into this upstream version
+  * Updated Danish translation (Closes: #830594)
+  * Updated Brazilian Portuguese translation (Closes: #852445)
+  * Enabled build for arm64 (Closes: #791943)
+  * Fix FTCBFS: Invoke configure script through dh_auto_configure
+    in debian/rules (Closes: #850875)
+  * Added patch to add -fno-PIC to purgatory/arch/arm64/Makefile to
+    enable build on arm64
+
+ -- Khalid Aziz <khalid@debian.org>  Wed, 25 Jan 2017 12:36:57 -0700
+
+kexec-tools (1:2.0.12-1) unstable; urgency=medium
+
+  * New upstream release
+  * Upstream release no longer uses build date in version
+    (Closes: #783239)
+  * Fix kexec failures when compiled with gcc > v5 (Closes: #825189)
+  * Add support for scripts in /etc/defauls/kexec.d (Closes: #752790)
+  * Update japaneses translation (Closes: #819601)
+  * Update french translation (Closes: #821073)
+  * Update dutch translation (Closes: #821441)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 24 Jun 2016 14:22:01 -0600
+
+kexec-tools (1:2.0.10-2ubuntu1) yakkety; urgency=medium
+
+  * Merge from Debian unstable.(LP: #1587479)  Remaining changes:
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Adjust INITCONFFILE to vmlinux if used
+    - Use format-security.patch instead of const_string_warning.patch
+    - Drop unneeded patches (all fixed upstream and not in series) :
+       d/p/fix-callback-functions-given-to-kexec_iomem_for_each_line.patch
+       d/p/kdump_makefile.patch
+       d/p/kexec-p-fails-to-load-kernels-with-version-x.y.patch
+    - [PowerPC64] Fix failure in purgatory when compiled with gcc5
+       Application of upstream fixes so kexec-tools work with gcc5 on PowerPC64
+       commit 4a2ae3a39c64dc43e9d094be9541253234ff4822,
+       1e423dc297d10eb7ff25c829d2856ef12fc81d77,
+       3debb8cf3272216119cb2e59a4963ce3c18fe8e3
+  * New changes:
+    - Add maintainer script helper to handle removal of conffile
+      /etc/default/grub.d/kexec-tools.cfg has been removed.
+      Handle it properly
+    - Add Breaks: statement toward kdump-tools
+       Starting with kdump-tools 1:1.5.9-6, this package takes
+       over the addition of crashkernel= parameter which has
+       been removed from kexec-tools.
+       Make sure that it is upgraded accordingly.
+  * Dropped changes from previous merge
+    - Add and install kdump init script and initramfs snippet :
+      kdump script in initramfs replaced by kexec-tools long ago
+    - Call to update-grub to update boot args with crashkernel= :
+      Now handled by kexec-tools (>= 1:1.5.9-6)
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Thu, 02 Jun 2016 13:22:49 +0200
+
+kexec-tools (1:2.0.10-2) unstable; urgency=medium
+
+  * Fix for systemd bug, many thanks to Thomas Stangner. systemd users
+    must use "systemctl kexec" for a kexec reboot (Closes: #785714)
+  * Added -f option to update-rc.d in preinstall script (Closes: #807018)
+  * Updated code for USE_GRUB_CONFIG to work with new grub.cfg format which
+    also is back to using entry number for saved_entry (Closes: #766367)
+  * Changed the location of flag file for cold reboot to a safer location
+    (Closes : #766772)
+  * Added mips64 and mips64el to supported arches (Closes: #800953,
+    Closes: #809220)
+  * Make the package build reproducibly (Closes: #783239)
+  * Add Brazilian Portuguese debconf templates translation (Closes: #811512)
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 22 Mar 2016 17:27:30 -0600
+
+kexec-tools (1:2.0.10-1ubuntu2) xenial; urgency=medium
+
+  * [PowerPC64] Fix failure in purgatory when compiled with gcc5
+    Application of upstream fixes so kexec-tools work with gcc5 on PowerPC64
+
+    commit 4a2ae3a39c64dc43e9d094be9541253234ff4822,
+    1e423dc297d10eb7ff25c829d2856ef12fc81d77,
+    3debb8cf3272216119cb2e59a4963ce3c18fe8e3
+    [lp: #1546260]
+   
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Tue, 05 Apr 2016 11:14:18 +0200
+
+kexec-tools (1:2.0.10-1ubuntu1) xenial; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Use format-security.patch instead of const_string_warning.patch
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Thu, 03 Dec 2015 14:44:30 -0600
+
+kexec-tools (1:2.0.10-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #791942)
+  * Updated distclean_fix.patch to account for new files that need to
+    be cleaned up
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 14 Sep 2015 13:30:53 -0600
+
+kexec-tools (1:2.0.9-1ubuntu1) wily; urgency=medium
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Use format-security.patch instead of const_string_warning.patch
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Fri, 26 Jun 2015 15:05:43 -0500
+
+kexec-tools (1:2.0.9-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 15 Jun 2015 10:38:00 -0600
+
+kexec-tools (1:2.0.7-5.1ubuntu1) wily; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Use format-security.patch instead of const_string_warning.patch
+    - Patches to enable kexec-tool for ppc64el.
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Thu, 11 Jun 2015 08:41:28 -0500
+
+kexec-tools (1:2.0.7-5.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Don't reboot the machine while removing the package (Closes: #782033)
+  * Fix loading kdump kernel on i386 (Closes: #771671)
+
+ -- Balint Reczey <balint@balintreczey.hu>  Wed, 22 Apr 2015 12:04:44 +0200
+
+kexec-tools (1:2.0.7-5ubuntu2) vivid; urgency=medium
+
+  * Adjust kexec-tools for systems that use vmlinux. (LP: #1416515) 
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Fri, 30 Jan 2015 14:31:10 -0600
+
+kexec-tools (1:2.0.7-5ubuntu1) vivid; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Use format-security.patch instead of const_string_warning.patch
+    - Patches to enable kexec-tool for ppc64el.
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Tue, 02 Dec 2014 11:43:21 -0600
+
+kexec-tools (1:2.0.7-5) unstable; urgency=medium
+
+  * Deleted the extra "-x" from "#!/bin/sh -x" in kexec-load init
+    script (closes: Bug#770792)
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 24 Nov 2014 07:35:39 -0700
+
+kexec-tools (1:2.0.7-4ubuntu1) vivid; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Use format-security.patch instead of const_string_warning.patch
+    - Patches to enable kexec-tool for ppc64el.
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Tue, 04 Nov 2014 12:51:24 -0600
+
+kexec-tools (1:2.0.7-4) unstable; urgency=medium
+
+  * Changed the way systemd presence is detected to make shutdown more
+    reliable (closes: Bug#766338, closes: Bug#767449)
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 03 Nov 2014 16:37:53 -0700
+
+kexec-tools (1:2.0.7-3) unstable; urgency=medium
+
+  * Fixed kexec-load init script so it will detect systemd
+    vs initV and load kexec kernel correctly (closes: Bug#764626)
+  * Added architecture ppc64el and started using dh_autoreconf
+    (closes: Bug#762628)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 10 Oct 2014 10:14:58 -0600
+
+kexec-tools (1:2.0.7-2) unstable; urgency=medium
+
+  * Fix build failure on ppc (closes: Bug#754609)
+  * Replaced s390 arch with s390x (closes: Bug#729451)
+  * Added patch from Roland to support powerpcspe (closes: Bug#734697)
+  * Added support for systemd (closes: Bug#764360, closes: Bug#699008)
+  * Enhanced kexec init scripts to work with systemd as well and now
+    "sudo reboot" from an X11 terminal works (closes: Bug#747119)
+  * Includes upstream fix to align initrd_base address to pagesize
+    (closes: Bug#756127)
+  * Added Turkish translation (closes: Bug#757510)
+
+ -- Khalid Aziz <khalid@debian.org>  Wed, 08 Oct 2014 11:01:58 -0600
+
+kexec-tools (1:2.0.7-1ubuntu2) utopic; urgency=medium
+
+  * The following enable kexec-tools for ppc64el: (LP: #1364427)
+    - kexec-ppc64-disabling-exception-handling-when-buildi.patch
+    - kexec-ppc64-move-to-device-tree-version-17.patch
+    - ppc64-kdump-Fix-ELF-header-endianess.patch
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Thu, 02 Oct 2014 21:38:53 +0000
+
+kexec-tools (1:2.0.7-1ubuntu1) utopic; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Run aclocal during build; build-dep on automake.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile
+    - Don't call db_stop from the postinst.
+    - Add ppc64el architecture.
+    - Use format-security.patch instead of const_string_warning.patch
+    - Dropped:
+       - kexec-p-fails-to-load-kernels-with-version-x.y.patch
+       - kdump_makefile.patch
+
+ -- Chris J Arges <chris.j.arges@canonical.com>  Thu, 02 Oct 2014 15:06:12 -0500
+
+kexec-tools (1:2.0.7-1) unstable; urgency=low
+
+  * New upstream release. Refreshed patches to apply without offsets
+  * Stopped passing start/stop to update-rc.d
+  * Includes fix for multiboot image booting bug from upstream 
+    (closes: Bug#735360)
+
+ -- Khalid Aziz <khalid@debian.org>  Wed, 09 Jul 2014 10:44:35 -0600
+
+kexec-tools (1:2.0.6-0ubuntu2) trusty; urgency=medium
+
+  * endianess-initrd.patch: Fix endian issues with initrd base and size.
+  * stack-protection.patch: Disable stack-protector for ppc64/purgatory.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Wed, 16 Apr 2014 15:27:06 +0100
+
+kexec-tools (1:2.0.6-0ubuntu1) trusty; urgency=medium
+
+  * New upstream release 2.0.6 with new ppc64el support (LP: #1300470):
+    - kdump_makefile.patch: Dropped, no longer needed with new version.
+    - kexec-p-fails-to-load-kernels-with-version-x.y.patch: Upstreamed.
+    - format-security.patch: Fixing FTBFS with -Werror=format-security.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Mon, 31 Mar 2014 14:26:44 -0600
+
+kexec-tools (1:2.0.4-1ubuntu1) trusty; urgency=low
+
+  * Merge from Debian unstable (LP: #1271127), remaining changes:
+    - Run aclocal during build; build-dep on automake.
+    - Implementation of kdump-tools is now completed so the following are
+      removed :
+        kdump init script and initramfs snippet
+        Remove dependancy to initramfs-tools and makedumpfile
+        Remove Depend on makedumpfile (on appropriate architectures)
+    - Call to update-grub to update boot args with crashkernel=
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile (claimed to be fixed in Debian but isn't).
+    - Don't call db_stop from the postinst.
+
+ -- Louis Bouchard <louis.bouchard@ubuntu.com>  Tue, 21 Jan 2014 11:29:40 +0100
+
+kexec-tools (1:2.0.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Removed crashdump_warning.patch since it is in upstream now
+  * Removed update_kexec_manpage.patch since it is in upstream now
+  * Updated watch file to look for more extensions that tgz and tar.gz, as 
+    suggested by someone on PTS
+  * Added support for parallel make (closes: Bug#727130)
+  * Added support for grub2's saved_entry (closes: Bug#699007)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 08 Nov 2013 16:38:16 -0700
+
+kexec-tools (1:2.0.3-4ubuntu3) trusty; urgency=low
+
+  * Increase memory parameter crashkernel command line to 128M to avoid 
+    OOM kernel panic. (LP: #785394)
+
+ -- Chris J Arges <chris.j.arges@ubuntu.com>  Wed, 18 Dec 2013 10:54:08 -0600
+
+kexec-tools (1:2.0.3-4ubuntu2) trusty; urgency=low
+
+  * Add "crashkernel=384M-2G:64M,2G-:128M" to GRUB command line for
+    non-recovery entries.  This supersedes an Ubuntu-specific patch
+    previously carried in grub2 itself.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Tue, 12 Nov 2013 17:03:24 +0000
+
+kexec-tools (1:2.0.3-4ubuntu1) trusty; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - Run aclocal during build; build-dep on automake.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Also call update-grub after update-initramfs if /boot/grub/grub.cfg
+      exists.
+    - Depend on makedumpfile (on appropriate architectures), for use in 
+      the initramfs script.
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile (claimed to be fixed in Debian but isn't).
+    - Don't call db_stop from the postinst.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 27 Oct 2013 21:45:21 -0700
+
+kexec-tools (1:2.0.3-4) unstable; urgency=low
+
+  * Drop the dependency on grub2 which is not quite right 
+    (closes: Bug#717953, closes: Bug#718260)
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 29 Jul 2013 08:16:59 -0600
+
+kexec-tools (1:2.0.3-3) unstable; urgency=low
+
+  * Fixed kexec-load init script to parse newer grub.cfg files correctly
+    (closes: Bug#714016)
+  * Replaced echo in kexec init script with printf to avoid bashism
+    (closes: Bug#701551)
+  * Fixed the "kexec -p" failure with kernel versions of the form x.y
+    (closes: Bug#708034)
+  * Updated japanese translation (Thank you Victory and Japanese Debian 
+    Developers) (closes: Bug#717206)
+  * Added mips and mipsel to supported architectures (closes: Bug#711274)
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 25 Jul 2013 13:57:30 -0600
+
+kexec-tools (1:2.0.3-2ubuntu2) saucy; urgency=low
+
+  * Re-fix to not call db_stop from the postinst.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 06 May 2013 14:12:30 -0700
+
+kexec-tools (1:2.0.3-2ubuntu1) saucy; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - Run aclocal during build; build-dep on automake.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call update-initramfs.
+    - Also call update-grub after update-initramfs if /boot/grub/grub.cfg
+      exists.
+    - Depend on makedumpfile (on appropriate architectures), for use in 
+      the initramfs script.
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile (claimed to be fixed in Debian but isn't).
+  * Dropped changes:
+    - restore debian/README.debian, dropped accidentally
+    - debian/patches/ubuntu-ppc-__lshrdi3-ftbs.patch: no longer needed to
+      fix FTBFS on powerpc.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 02 May 2013 18:05:05 -0700
+
+kexec-tools (1:2.0.3-2) unstable; urgency=low
+
+  * Changed the default for kexec to not be enabled, and changed the 
+    priority of debconf question for enabling kexec by default to
+    high (closes: Bug#638261)
+  * Handle the case of a separate /boot partition (closes: Bug#687956)
+  * Updated to use hardening rules
+  * Added full path to the calls to kexec in init scripts to make sure 
+    it works reliably.
+  * Added code to clear screen before rebooting (closes: Bug#606955)
+
+ -- Khalid Aziz <khalid@debian.org>  Sun, 13 Jan 2013 19:39:31 -0700
+
+kexec-tools (1:2.0.3-1ubuntu2) quantal; urgency=low
+
+  [ Louis Bouchard ]
+  * Removed dependency to vmcoreinfo which is no longer required
+    and no longer part of the kernel package.  LP: #988512.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 14 Aug 2012 12:48:22 -0700
+
+kexec-tools (1:2.0.3-1ubuntu1) quantal; urgency=low
+
+  * Merge from Debian (LP: #1020965); remaining changes:
+    - Fix FTBFS on powerpc due to duplicate defnition of __lshrdi3.
+    - Only run update-grub if /boot/grub/grub.cfg exists, fixing installation
+      in chroots.
+    - Run aclocal during build; build-dep on automake1.9.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call the update-initramfs trigger.  Also call
+      update-grub after update-initramfs trigger.
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile.
+    - Only install the kdump initramfs script and depend on makedumpfile on
+      architectures that makedumpfile supports.
+
+ -- Stefan Bader <stefan.bader@canonical.com>  Tue, 17 Jul 2012 10:50:17 +0200
+
+kexec-tools (1:2.0.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Switched to dpkg-source 3.0 (quilt) format
+  * Updated kexec and coldreboot man pages (closes: Bug#653197)
+  * Added armhf architecture (closes: Bug#645652)
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 31 Jan 2012 09:11:31 -0700
+
+kexec-tools (1:2.0.2-3ubuntu4) precise; urgency=low
+
+  * Build kexec-tools-udeb for armhf as well.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Sat, 21 Apr 2012 01:07:21 +0100
+
+kexec-tools (1:2.0.2-3ubuntu3) precise; urgency=low
+
+  * Fix an unnecessary bashism.
+  * Only install the kdump initramfs script and depend on makedumpfile on
+    architectures that makedumpfile supports.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Tue, 03 Jan 2012 10:24:16 +0000
+
+kexec-tools (1:2.0.2-3ubuntu2) precise; urgency=low
+
+  * debian/kdump.initramfs: call /usr/bin/makedumpfile via a chroot command,
+    so that if makedumpfile is dynamically linked, we get proper library
+    resolution.  Thanks to Louis Bouchard <louis.bouchard@canonical.com> for
+    the patch.  LP: #785425.
+  * debian/kdump.initramfs: handle the possibility that /usr, /boot, or
+    /var is on a separate filesystem and needs to be manually mounted before
+    calling makedumpfile.  LP: #828731.
+  * Depend on makedumpfile, without which the initramfs script doesn't work.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 02 Jan 2012 22:43:33 -0800
+
+kexec-tools (1:2.0.2-3ubuntu1) precise; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - Fix FTBFS on powerpc due to duplicate defnition of __lshrdi3.
+    - Only run update-grub if /boot/grub/grub.cfg exists, fixing installation
+      in chroots.
+    - Run aclocal during build; build-dep on automake1.9.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call the update-initramfs trigger.  Also call
+      update-grub after update-initramfs trigger.
+    - Default to not kexecing a kernel on boot in the automatically
+      generated conffile.
+  * Build for armhf.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 05 Dec 2011 15:45:25 +0100
+
+kexec-tools (1:2.0.2-3) unstable; urgency=low
+
+  * Added check for link_in_boot in kernel-img.conf and update kexec
+    kernel and initrd locations accordingly in kexec config file 
+    (closes: Bug#577064)
+  * Added a check for /boot/grub directory before asking if kexec should use
+    grub config (Closes: Bug#643306)
+  * Added to SH4 to supported arch and changed arch for udeb to list of 
+    supported Linux platforms (closes: Bug#600778)
+  * Corrected the malformed patch update_kexec_manpage.dpatch
+  * Added build-arch and build-indep targets to debian/rules
+  * Debconf templates and debian/control reviewed by the debian-l10n-
+    english team as part of the Smith review project. Closes: #639226, #636780
+  * [Debconf translation updates]
+  * Slovak (Slavko).  Closes: #639305
+  * Russian (Yuri Kozlov).  Closes: #637753
+  * Swedish (Martin Bagge / brother).  Closes: #640049
+  * French (Steve Petruzzello).  Closes: #640092
+  * Czech (Miroslav Kure).  Closes: #640218
+  * Danish (Joe Hansen).  Closes: #640408
+  * Portuguese (Rui Branco).  Closes: #640858
+  * Dutch; (Jeroen Schot).  Closes: #640989
+  * Spanish; (Camaleón).  Closes: #640994
+  * German (Helge Kreutzmann).  Closes: #641143
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 11 Oct 2011 10:56:59 -0600
+
+kexec-tools (1:2.0.2-2) unstable; urgency=low
+
+  * Fixed the problem with --no-undefined option being used for gcc. 
+    Applied Matthias's patch (closes: Bug#610517, Bug#624897) 
+  * Replaced copyright info in debian/copyright with list of authors
+    and ensured link to license pionts to GPLv2 (closes: Bug#485679)
+  * Updated PATH in init scripts to make sure /sbin and /bin are searched 
+    before other paths (closes: Bug#581219)
+  * Corrected kexec man page to not say shutdown is called on kexec -e
+    (closes: Bug#609462)
+  * Added option to use grub configuration to load kernel (close: Bug#525356)
+
+ -- Khalid Aziz <khalid@debian.org>  Sun, 31 Jul 2011 14:30:31 -0600
+
+kexec-tools (1:2.0.2-1ubuntu3) oneiric; urgency=low
+
+  * Only run update-grub if /boot/grub/grub.cfg exists, fixing installation
+    in chroots (LP: #401405).
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Tue, 30 Aug 2011 13:30:21 +0100
+
+kexec-tools (1:2.0.2-1ubuntu2) oneiric; urgency=low
+
+  * Fix FTBS on powerpc due to duplicate defnition of __lshrdi3
+
+ -- Andy Whitcroft <apw@canonical.com>  Wed, 15 Jun 2011 15:11:54 +0100
+
+kexec-tools (1:2.0.2-1ubuntu1) oneiric; urgency=low
+
+  * Merge with Debian.
+    - Drop DEBIAN.readme taking debian upstream version
+    - Drop ubuntu patch arm-higher-initrd-load-addr dpatch as initrd
+      locations are now calculated from the current size assuming maximum
+      compression of * 4.
+    - Remaining changes:
+      + Run aclocal during build; build-dep on automake1.9.
+      + Add and install kdump init script and initramfs snippet; depend on
+        initramfs-tools and call the update-initramfs trigger.  Also call
+        update-grub after update-initramfs trigger.
+      + Default to not kexecing a kernel on boot in the automatically
+        generated conffile.
+      + --no-undefined is a linker option, not a gcc option.
+
+ -- Andy Whitcroft <apw@canonical.com>  Mon, 23 May 2011 11:23:37 +0100
+
+kexec-tools (1:2.0.2-1) unstable; urgency=low
+
+  * New upstream release (closes: Bug#623814)
+  * Updated watch file (closes: Bug#623813)
+  * Updated URL in copyright file
+  * Updated linitian overrides file to match path name for new lintian
+  * Added source/lintian-overrides file to override innocuous lintian errors
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 28 Apr 2011 13:06:41 -0600
+
+kexec-tools (1:2.0.1-4) unstable; urgency=low
+
+  * Fix pending l10n issues. Debconf translations:
+    - Spanish (Camaleón).  Closes: #583538
+    - Danish (Joe Hansen).  Closes: #599859
+    - Italian (Vincenzo Campanella).  Closes: #600218
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 18 Oct 2010 12:01:47 -0600
+
+kexec-tools (1:2.0.1-3) unstable; urgency=low
+
+  * Added support for building udeb (closes: Bug#591441) 
+  * Updated standards version to 3.9.1
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 09 Aug 2010 14:41:14 -0600
+
+kexec-tools (1:2.0.1-2ubuntu4) natty; urgency=low
+
+  * --no-undefined is a linker option, not a gcc option.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Jan 2011 05:30:44 +0100
+
+kexec-tools (1:2.0.1-2ubuntu3) natty; urgency=low
+
+  * No change rebuild, LP: #642071
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 23 Nov 2010 02:10:41 +0000
+
+kexec-tools (1:2.0.1-2ubuntu2) maverick; urgency=low
+
+  * kdump.initramfs: panic if assumptions are not satisfied, instead of
+    letting the system continue to boot inside the crash kernel. (LP: #600051)
+
+ -- Anders Kaseorg <andersk@mit.edu>  Tue, 17 Aug 2010 02:18:48 +0200
+
+kexec-tools (1:2.0.1-2ubuntu1) maverick; urgency=low
+
+  * Drop debian/commit-templates/patch, unused.
+  * Drop upgrade snippet for versions older than the lucid one.
+  * Merge with Debian.
+    - Drop dpatch arm-fix-architecture-detection, included in Debian as
+      arm_arch dpatch.
+    - Remaining changes:
+      + Run aclocal during build; build-dep on automake1.9.
+      + Add and install kdump init script and initramfs snippet; depend on
+        initramfs-tools and call the update-initramfs trigger.  Also call
+        update-grub after update-initramfs trigger.
+      + Default to not kexecing a kernel on boot in the automatically
+        generated conffile.
+      + Add arm-higher-initrd-load-addr dpatch to bump initrd load offset from
+        0x800000 to 0x8000000 since our kernels are so big that they overwrite
+        the initrd when they uncompress; fixes kexec initrd support on all ARM
+        Ubuntu kernels; LP #568283.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Sat, 22 May 2010 22:13:09 +0200
+
+kexec-tools (1:2.0.1-2) unstable; urgency=low
+
+  * Fixed kernel load failure on "armv5tel" architecture (closes: Bug#564648)
+  * Added a script, coldreboot, to force a cold reboot (closes: Bug#519950)
+  * Added dependency dependency upon local filesystem to ensure filesystem
+    containing kexec image is not unmounted before kexec-load runs 
+    (closes: Bug#578126)
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 22 Apr 2010 16:03:31 -0600
+
+kexec-tools (1:2.0.1-1ubuntu3) lucid; urgency=low
+
+  * New dpatch, arm-higher-initrd-load-addr, bump initrd load offset from
+    0x800000 to 0x8000000 since our kernels are so big that they overwrite the
+    initrd when they uncompress; fixes kexec initrd support on all ARM Ubuntu
+    kernels; LP: #568283.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Thu, 22 Apr 2010 14:06:08 +0200
+
+kexec-tools (1:2.0.1-1ubuntu2) lucid; urgency=low
+
+  * Don't call db_stop in the postinst; this is not what it's for, and it
+    causes update-grub to break on Ubuntu by killing the frontend that child
+    processes expect to talk to.  LP: #518853.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 17 Feb 2010 23:04:30 -0800
+
+kexec-tools (1:2.0.1-1ubuntu1) lucid; urgency=low
+
+  * Merge from Debian; replace arm-getpagesize-unistd and configure_syntax
+    dpatches to use their Debian equivalents; remaining changes:
+    - Run aclocal; build-dep on automake1.9.
+    - Add and install kdump init script and initramfs snippet; depend on
+      initramfs-tools and call the update-initramfs trigger.  Also call
+      update-grup after update-initramfs trigger.
+    - Default to not kexecing a kernel on boot in the automatically generated
+      conffile; also disable this on upgrades from older versions.
+    - Fix architecture detection on ARM, cherry-picked from upstream.
+  * Build-dep on automake instead of automake1.9.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Mon, 08 Feb 2010 10:53:24 +0100
+
+kexecc-tools (1:2.0.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Honor dpkg-preconfigure, remove /etc/default/kexec from deb package and
+    remove /etc/default/kexec on package purge (closes: Bug#551919)
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 24 Nov 2009 08:55:05 -0700
+
+kexec-tools (1:2.0.1-0ubuntu4) lucid; urgency=low
+
+  * New dpatch, arm-getpagesize-unistd, cherry pick from upstream "arm:
+    Include unistd.h for getpagesize()"
+    c986de289120d449bf4d94c46c676566ccfd4202 to fix build issue on armel
+    breaking the binaries.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Sun, 07 Feb 2010 22:16:39 +0100
+
+kexec-tools (1:2.0.1-0ubuntu3) lucid; urgency=low
+
+  * New dpatch, arm-fix-architecture-detection, cherry-pick second hunk of
+    upstream commit "arm: fix architecture detection"
+    5545216da4360d6494cc7ba574e04620a826a332.  Fixes support for arm* utsnames
+    in particular armv7l.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Sun, 07 Feb 2010 21:52:30 +0100
+
+kexec-tools (1:2.0.1-0ubuntu2) lucid; urgency=low
+
+  * Re-add automake1.9 build-dep since we still patch configure.ac and this
+    triggers an autoreconf.  (Upstream doesn't use AM_MAINTAINER_MODE.)
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Sun, 07 Feb 2010 21:25:19 +0100
+
+kexec-tools (1:2.0.1-0ubuntu1) lucid; urgency=low
+
+  * New upstream release.
+    - Switch to non-native packaging and upstream tarball; drop automake1.9
+      build-dep.  NB: This is the Debian tarball which has been repacked by
+      the Debian maintainer, but the contents are identical to the upstream
+      tarball.  Picking the Debian tarball should make it easier to resync
+      with Debian if we stick with 2.0.1 for a while.
+    - Drop arm_build dpatch, fixed differently upstream.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Sun, 07 Feb 2010 20:39:48 +0100
+
+kexec-tools (1:2.0.0-2) unstable; urgency=low
+
+  * Fixed configure script failure (closes: Bug#543081)
+  * Added debian/README.source
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 10 Sep 2009 09:34:58 -0600
+
+kexec-tools (1:2.0.0-1) unstable; urgency=low
+
+  * New upstream version 
+  * Added note about call to shutdown by kexec -e. Also added a README.debian
+    to explain automatic enablement of kexec (closes: Bug#501847)
+  * Added japanese translation (closes: Bug#512870)
+  * Added swedish translation (closes: Bug#503604)
+
+ -- Khalid Aziz <khalid@debian.org>  Wed, 15 Apr 2009 16:41:45 -0600
+
+kexec-tools (20090000-2.0.0ubuntu12) karmic; urgency=low
+
+  * debian/patches/configure_syntax.dpatch: Put semicolons before 'fi', or
+    else configure breaks.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Wed, 07 Oct 2009 00:15:18 +0100
+
+kexec-tools (20090000-2.0.0ubuntu11) karmic; urgency=low
+
+  * Don't call db_stop in postinst as update-grub calls into debconf; thanks
+    Colin Watson; LP: #400397.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Thu, 16 Jul 2009 23:05:51 +0200
+
+kexec-tools (20090000-2.0.0ubuntu10) karmic; urgency=low
+
+  * debian/kexec-tools.postinst:
+    - run update-grub explicitely instead of using the trigger,
+      grub2 does not have one (see debian #481542)
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Thu, 16 Jul 2009 10:42:03 +0200
+
+kexec-tools (20090000-2.0.0ubuntu9) karmic; urgency=low
+
+  * debian/kdump.init.d:
+    - generate crash file from vmcore on first boot automatically
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Tue, 23 Jun 2009 10:59:14 +0200
+
+kexec-tools (20090000-2.0.0ubuntu8) karmic; urgency=low
+
+  * debian/kdump.initramfs:
+    - use ELF format for the vmcore file. "crash" did not produce
+      a backtrace with the kdump-compressed format
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Mon, 22 Jun 2009 17:23:45 +0200
+
+kexec-tools (20090000-2.0.0ubuntu7) karmic; urgency=low
+
+  * debian/kdump.initramfs:
+    - dump the kernel crash info to /var/crash/vmcore-$KVER
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Mon, 22 Jun 2009 15:42:24 +0200
+
+kexec-tools (20090000-2.0.0ubuntu6) karmic; urgency=low
+
+  * debian/kexec-tools.template
+    - set "kexec-tools/load_kexec" to "false" by default
+  * debian/kexec-tools.postinst: 
+    - trigger update-grub and update-initramfstools to ensure
+      the kdump functionality is availabe on next reboot
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Mon, 22 Jun 2009 14:40:18 +0200
+
+kexec-tools (20090000-2.0.0ubuntu5) karmic; urgency=low
+
+  * debian policy forbids dpkg conffile handling and maintainer script
+    configuration in the same package as this leads to inconsistant behaviour
+    between apt-get install and dpkg -i installs of the same package.  Switch
+    wholy to the maintainer script.  LP: #368745
+  * kexec reboot has been enabled by default whereas it should have been
+    opt-in, it is therefore appropriate to force this off for upgrades from
+    older versions.  LP: #251242
+
+ -- Andy Whitcroft <apw@canonical.com>  Tue, 28 Apr 2009 19:21:30 +0100
+
+kexec-tools (20090000-2.0.0ubuntu4) karmic; urgency=low
+
+  * kexec based reboot triggers a number of semantic changes which
+    are visible to the user, it should be opt-in by default.  Adjust
+    kexec.default to disable kexec by default.  LP: #251242
+
+ -- Andy Whitcroft <apw@canonical.com>  Mon, 27 Apr 2009 10:32:46 +0100
+
+kexec-tools (20090000-2.0.0ubuntu3) jaunty; urgency=low
+
+  * Somehow lost the installation of /etc/init.d/kdump, without
+    which nothing really works
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Wed, 25 Mar 2009 19:59:28 +0000
+
+kexec-tools (20090000-2.0.0ubuntu2) jaunty; urgency=low
+
+  * Install 0_kdump into initramfs scripts
+  * Depend on initramfs-tools 
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Wed, 04 Mar 2009 19:08:15 +0000
+
+kexec-tools (20090000-2.0.0ubuntu1) jaunty; urgency=low
+
+  [ Tim Gardner ]
+
+  * Updated to kexec-tools v2.0.0 from kexec-20080324-2.1 at
+    git://git.kernel.org/pub/scm/linux/kernel/git/horms/kexec-tools.git.
+
+    Update steps:
+    Removed debian/patches/update_kexec_manpage.dpatch
+    Updated debian/patches/distclean_fix.dpatch
+    Removed obsolete debian/patches/powerpc_fix.dpatch
+    debian/rules: Run aclocal, autoheader, and autoconf if configure does not exist.
+
+    Try to forget 20080226-2.0.0-ubuntu1 ever existed. This version was updated directly
+    from 20080324-2.1 and completely obsoletes 20080226-2.0.0-ubuntu1.
+
+  [ Jim Lieb ]
+
+  * Fix rules to handle updated package makefile+autotools
+    package build now depends on autotools1.9
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Tue, 03 Mar 2009 20:22:14 +0000
+
+kexec-tools (20080324-2.1) unstable; urgency=low
+
+  * Porter NMU.
+  * New dpatch, arm_build, fixes build on armel; thanks Cyril Hrubis;
+    closes: #489175.
+  * List arm and armel in control.
+
+ -- Loic Minier <lool@dooz.org>  Sat, 31 Jan 2009 18:31:42 +0000
+
+kexec-tools (20080324-2) unstable; urgency=low
+
+  * Updated init script to check for new boolean value of LOAD_KEXEC (closes:
+    Bug#479961)
+  * Added french translation for debconf (closes: Bug#470921,Bug#479688)
+  * Added czech translation for debconf (closes: Bug#480301)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 09 May 2008 12:03:29 -0600
+
+kexec-tools (20080324-1) unstable; urgency=low
+
+  * New upstream version
+  * Fixed a typo in x86-64 makefile that causes kexec load to fail on
+    amd64 (closes: Bug#473547)
+  * Added a patch from upstream to enable compilation on powerpc (closes:
+    Bug#477260)
+  * Added portugese translation for debconf (closes: Bug#469960,Bug#478358)
+  * Added german translation for debconf (closes: Bug#470499)
+  * Added galician translation (closes: Bug#477940)
+  * Added russian translation (closes: Bug#477983)
+  * Added finnish translation (closes: Bug#477984)
+  * Added vietnamese translation (closes: Bug#478221)
+  * Changed debconf variable type to boolean (closes: Bug#469256)
+  * Added debian/watch file (closes: Bug#474752)
+
+ -- Khalid Aziz <khalid@debian.org>  Tue, 01 Apr 2008 09:53:50 -0600
+
+kexec-tools (20080227-2) unstable; urgency=low
+
+  * Fixed a bad dependency in kexec-load init script 
+  * Changed the priority of debconf question to medium.
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 03 Mar 2008 09:08:09 -0700
+
+kexec-tools (20080227-1) unstable; urgency=low
+
+  * New upstream version
+  * Updated init scripts to remove bash'ism (closes: Bug#465000, Bug#462554)
+  * Updated init scripts to add reverse dependency on umountroot 
+    (closes: Bug#458983)
+  * Added autofs to Required-Stop for kexec-load init script to ensure 
+    a kexec load of a kernel on an automounted filesystem is successful 
+    (closes: Bug#440979)
+  * Changed the kexec-load init script execution order to run before autofs
+    (closes: Bug#440979)
+  * Added debconf options to ask user whether to enable kexec by default 
+    or not
+  * Updated package description in control file
+  * Updated kexec man page to remove the note about lack of support for 
+    compressed kernels (closes: Bug#464813)
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 28 Feb 2008 14:19:40 -0700
+
+kexec-tools (20080226-2.0.0-ubuntu1) jaunty; urgency=low
+
+  [ Jim Lieb ]
+
+  * Update to 2.0.0 official release to include later kernels and fixes
+    for x86_64 etc.  Drop all patches except debianize which is reworked to
+    contain all of the debian packaging specifics.
+  * Fix rules to handle updated package makefile+autotools
+    package build now depends on autotools1.9
+  * Update copyright and other bits that lintian complains about
+
+  [ Tim Gardner ]
+
+  * Messed with debian/rules to make it a bit more sane in its use of dpatch.
+  * Add rsync as a build dependency. 
+  * Fixed some path issues in debian/kdump.initramfs. makedumpfile seems to have
+    changed locations.
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Thu, 19 Feb 2009 10:56:59 -0800
+
+kexec-tools (20070330-4) unstable; urgency=low
+
+  * Added another condition around strip command to address build failure on
+    architectures that do not generate kexec_test.static image.
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 01 Nov 2007 14:19:13 -0600
+
+kexec-tools (20070330-3) unstable; urgency=low
+
+  * Made command to strip kexec_test binary conditional (closes: Bug#437251)
+  * Removed mv command that caused build failure on a few architectures 
+    (closes: Bug#441128)
+  * Dropped powerpc and alpha architectures from supported arch list (closes:
+    Bug#338846)
+
+ -- Khalid Aziz <khalid@debian.org>  Wed, 31 Oct 2007 15:12:11 -0600
+
+kexec-tools (20070330-2) unstable; urgency=low
+
+  * Changed /etc/default/kexec to enable kexec reboots by default 
+    (closes: Bug#426506)
+  * Cleaned up unnecessary files
+  * Updated LSB header in init scripts (closes: Bug#429633)
+  * closes: Bug#392231 (upstream has removed the offending code)
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 11 Jun 2007 16:03:25 -0600
+
+kexec-tools (20070330-1) experimental; urgency=low
+
+  * New upstream version from Simon Horman's kexec-tools-testing tree. 
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 30 Mar 2007 09:32:27 -0600
+
+kexec-tools (1.101-kdump10-2) unstable; urgency=low
+
+  * Moved the install location for kexec_test to /usr/lib (closes: Bug#392395)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 13 Oct 2006 08:31:16 -0600
+
+kexec-tools (1.101-kdump10-1) unstable; urgency=low
+
+  * Applied -kdump10 patch from http://lse.sf.net/kdump
+  * man page updated from -kdump10 patch (closes: Bug#344486)
+  * Better error reporting for when kexec_load fails on x86_64 (closes:
+    Bug#385611)
+  * Fixed a typo in x86_64 code (closes: Bug#385611)
+  * Improved init scripts
+  * Update architecture list in control file with the supported architectures
+    only (closes: Bug#338846)
+
+ -- Khalid Aziz <khalid@debian.org>  Mon, 09 Oct 2006 14:58:48 -0600
+
+kexec-tools (1.101-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Add support for init scripts (Closes: #387599, #378880, #344489)
+  * Bumped Standards Version
+
+ -- Julien Danjou <acid@debian.org>  Mon,  2 Oct 2006 14:42:42 +0200
+
+kexec-tools (1.101-2) unstable; urgency=low
+
+  * Fixed build failures (closes: Bug#327639, Bug#327715)
+
+ -- Khalid Aziz <khalid@debian.org>  Thu, 15 Sep 2005 08:57:43 -0600
+
+kexec-tools (1.101-1) unstable; urgency=low
+
+  * Initial release (closes: Bug#320202, Bug#318881)
+
+ -- Khalid Aziz <khalid@debian.org>  Fri, 09 Sep 2005 14:06:19 -0600
+

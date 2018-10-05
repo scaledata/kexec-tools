@@ -1,0 +1,25 @@
+.\" Process this file with
+.\" groff -man -Tascii coldreboot.8
+.\"
+.TH kexec 8 "April 2006" Linux "User Manuals"
+.SH NAME
+coldreboot \- Force a cold reboot bypassing kexec-tools default
+.SH SYNOPSIS
+.B /sbin/coldreboot
+.B [reboot options]
+
+.SH DESCRIPTION
+.B coldreboot
+is a script that forces a cold reboot regardless of whether kexec is enabled
+or not in /etc/default/kexec.
+.B coldreboot
+takes the same arguments as /sbin/reboot and passes them on to /sbin/reboot
+later.
+
+.SH NOTES
+.PP
+.B coldreboot
+prevents a kexec kernel from being loaded automatically and thus
+forces a cold reboot. If the user loads a kexec kernel by hand,
+.B coldreboot
+will still result in a kexec reboot.

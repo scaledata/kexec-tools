@@ -1,0 +1,1 @@
+rm_conffile /etc/default/grub.d/kexec-tools.cfg
