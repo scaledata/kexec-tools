@@ -1,0 +1,24 @@
+--- a/kexec/arch/i386/crashdump-x86.c	2018-09-26 18:45:30.506501797 +0000
++++ b/kexec/arch/i386/crashdump-x86.c	2018-09-26 18:46:06.813501798 +0000
+@@ -202,7 +202,8 @@
+ 
+ 			/* Look for kernel text mapping header. */
+ 			if ((saddr >= X86_64__START_KERNEL_map) &&
+-			    (eaddr <= X86_64__START_KERNEL_map + X86_64_KERNEL_TEXT_SIZE)) {
++			    (saddr <= X86_64__START_KERNEL_map + X86_64_RANDOMIZE_BASE_MAX_OFFSET) &&
++			    (eaddr - saddr  < X86_64_KERNEL_TEXT_SIZE)) {
+ 				saddr = _ALIGN_DOWN(saddr, X86_64_KERN_VADDR_ALIGN);
+ 				elf_info->kern_vaddr_start = saddr;
+ 				size = eaddr - saddr;
+--- a/kexec/arch/i386/crashdump-x86.h	2018-09-26 18:46:31.172830847 +0000
++++ b/kexec/arch/i386/crashdump-x86.h	2018-09-26 18:47:09.539774033 +0000
+@@ -15,6 +15,9 @@
+ #define X86_64_PAGE_OFFSET_PRE_2_6_27	0xffff810000000000ULL
+ #define X86_64_PAGE_OFFSET		0xffff880000000000ULL
+ 
++/* kASLR - Kernel base offset could be randomized up to 1G */
++#define X86_64_RANDOMIZE_BASE_MAX_OFFSET	0x40000000
++
+ #define X86_64_MAXMEM        		0x3fffffffffffUL
+ 
+ /* Kernel text size */

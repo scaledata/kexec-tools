@@ -1,3 +1,9 @@
+kexec-tools (1:2.0.16-1ubuntu1~16.04.1+rubrik1) UNRELEASED; urgency=medium
+
+  * Add patch to handle randomized kernel load address (KASLR). 
+
+ -- ubuntu <ubuntu@dynapod-colo-2193-108-200-92-75-vnode3>  Wed, 26 Sep 2018 20:28:14 +0000
+
 kexec-tools (1:2.0.16-1ubuntu1~16.04.1) xenial; urgency=low
 
   * Backport latest kexec-tools from bionic to xenial (LP: #1743529).
