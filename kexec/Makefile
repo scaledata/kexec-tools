@@ -102,8 +102,6 @@ clean += $(KEXEC_OBJS) $(KEXEC_DEPS) $(KEXEC_GENERATED_SRCS) \
 
 KEXEC = $(SBINDIR)/kexec
 KEXEC_MANPAGE = $(MANDIR)/man8/kexec.8
-KEXEC_COLDREBOOT=$(SBINDIR)/coldreboot
-KEXEC_COLDREBOOT_MANPAGE=$(MANDIR)/man8/coldreboot.8
 
 -include $(KEXEC_DEPS)
 
@@ -118,16 +116,6 @@ kexec/fs2dt.o: CPPFLAGS+=$($(ARCH)_FS2DT_INCLUDE)
 $(KEXEC_MANPAGE): kexec/kexec.8
 	@$(MKDIR) -p     $(MANDIR)/man8
 	cp $^ $(KEXEC_MANPAGE)
-
-$(KEXEC_COLDREBOOT): kexec/coldreboot
-	@$(MKDIR) -p     $(@D)
-	cp kexec/coldreboot $(KEXEC_COLDREBOOT)
-	/bin/chmod 755 $(KEXEC_COLDREBOOT)
-
-$(KEXEC_COLDREBOOT_MANPAGE): kexec/coldreboot.8
-	@$(MKDIR) -p     $(MANDIR)/man8
-	cp kexec/coldreboot.8 $(KEXEC_COLDREBOOT_MANPAGE)
-
 echo::
 	@echo "KEXEC_SRCS $(KEXEC_SRCS)"
 	@echo "KEXEC_DEPS $(KEXEC_DEPS)"

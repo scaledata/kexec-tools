@@ -80,7 +80,7 @@ setup_dol_start:
 	isync
 
 /* AFAIK, this is not strictly needed, although seems sane */
-#ifndef __NO_FPRS__
+#if 1
 	li      r9, 0
 
 	/* page table pointer */

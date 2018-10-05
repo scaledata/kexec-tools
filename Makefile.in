@@ -91,7 +91,7 @@ SHAREDSTATEDIR=$(BUILD_PREFIX)/com
 LOCALSTATEDIR=$(BUILD_PREFIX)/var
 LIBDIR=$(BUILD_PREFIX)/lib
 INFODIR=$(BUILD_PREFIX)/info
-MANDIR=$(BUILD_PREFIX)/share/man
+MANDIR=$(BUILD_PREFIX)/man
 MAN1DIR=$(MANDIR)/man1
 MAN2DIR=$(MANDIR)/man2
 MAN3DIR=$(MANDIR)/man3
@@ -178,13 +178,11 @@ PSRCS:=$(foreach s, $(SRCS), $(PACKAGE_NAME)-$(PACKAGE_VERSION)/$(s))
 PGSRCS:=$(foreach s, $(GENERATED_SRCS), $(PACKAGE_NAME)-$(PACKAGE_VERSION)/$(s))
 
 MAN_PAGES:=$(KEXEC_MANPAGE) $(KDUMP_MANPAGE) $(VMCORE_DMESG_MANPAGE)
-MAN_PAGES+= $(MANDIR)/man8/coldreboot.8
 BINARIES_i386:=$(KEXEC_TEST)
 BINARIES_x86_64:=$(KEXEC_TEST)
 BINARIES:=$(KEXEC) $(KDUMP) $(VMCORE_DMESG) $(BINARIES_$(ARCH))
-SCRIPTS:=$(SBINDIR)/coldreboot
 
-TARGETS:=$(BINARIES) $(MAN_PAGES) $(SCRIPTS)
+TARGETS:=$(BINARIES) $(MAN_PAGES)
 
 targets: $(TARGETS)
 
@@ -233,7 +231,7 @@ clean:
 distclean: dist-clean
 
 dist-clean: clean
-	$(RM) -f config.log config.status config.cache Makefile include/config.h include/stamp-h*
+	$(RM) -f config.log config.status config.cache Makefile include/config.h
 	$(RM) -f include/config.h.in configure $(SPEC)
 	$(RM) -rf autom4te.cache
 

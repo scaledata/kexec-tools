@@ -66,7 +66,7 @@ $(PURGATORY): LDFLAGS=$($(ARCH)_PURGATORY_EXTRA_CFLAGS)\
 $(PURGATORY): $(PURGATORY_OBJS)
 	$(MKDIR) -p $(@D)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@.sym $^
-#	$(LD) $(LDFLAGS) $(EXTRA_LDFLAGS) -Wl,--no-undefined -e purgatory_start -r -o $@ $(PURGATORY_OBJS) $(UTIL_LIB)
+#	$(LD) $(LDFLAGS) $(EXTRA_LDFLAGS) --no-undefined -e purgatory_start -r -o $@ $(PURGATORY_OBJS) $(UTIL_LIB)
 	$(STRIP) --strip-debug -o $@ $@.sym
 
 echo::

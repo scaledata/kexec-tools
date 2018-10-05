@@ -1,7 +1,6 @@
 
 arm64_PURGATORY_EXTRA_CFLAGS = \
 	-mcmodel=large \
-	-fno-PIC \
 	-fno-stack-protector \
 	-fno-asynchronous-unwind-tables \
 	-Wundef \

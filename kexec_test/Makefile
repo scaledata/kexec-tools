@@ -20,7 +20,7 @@ ifeq ($(BUILD_KEXEC_TEST),yes)
 KEXEC_TEST_OBJS = $(call objify, $(KEXEC_TEST_SRCS))
 KEXEC_TEST_DEPS = $(call depify, $(KEXEC_TEST_OBJS))
 
-KEXEC_TEST = $(PKGLIBDIR)/kexec_test.static
+KEXEC_TEST = $(PKGLIBDIR)/kexec_test
 
 clean += $(KEXEC_TEST_OBJS) $(KEXEC_TEST_DEPS) $(KEXEC_TEST)
 
@@ -36,6 +36,5 @@ $(KEXEC_TEST): LDFLAGS=-melf_i386 -e _start -Ttext $(RELOC)
 $(KEXEC_TEST): $(KEXEC_TEST_OBJS)
 	mkdir -p $(@D)
 	$(TARGET_LD) $(LDFLAGS) -o $@ $^
-	strip $@
 
 endif
